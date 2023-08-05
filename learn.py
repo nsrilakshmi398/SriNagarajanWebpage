@@ -1,10 +1,41 @@
 #To run the webpage use the following command in the terminal:
 # streamlit run .\learn.py 
+# TUTORIAL: https://www.youtube.com/watch?v=VqgUkExPvLY&t=8s
+#-----------DEPLOYMENT USING HEROKU------------
+# TUTORIAL: https://www.youtube.com/watch?v=nJHrSvYxzjE
+
 
 import streamlit as st
+from PIL import Image
+from streamlit_option_menu import option_menu
 
+#--------WEBPAGE DESIGN--------#
 st.set_page_config(page_title='Sri Nagarajan', page_icon=':blue_heart:', layout='wide')
 #For emoji: https://www.webfx.com/tools/emoji-cheat-sheet/
+
+#For sections still to be created use this Under Construction Image from google images
+#Source: https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.lawrenceprospera.org%2Fimages%2Fquintana%2FPage_Under_Construction.jpg&tbnid=l6mPRwqWK_M4iM&vet=12ahUKEwi-_reiicOAAxWunCcCHQ_9CgUQMyglegUIARDJAg..i&imgrefurl=https%3A%2F%2Fwww.lawrenceprospera.org%2Fprograms%2Fsisu%2F2-uncategorised%2F35-under-construction&docid=mlxO0yBSedGMDM&w=600&h=577&q=under%20construction&ved=2ahUKEwi-_reiicOAAxWunCcCHQ_9CgUQMyglegUIARDJAg
+
+def under_construction():
+    img_loc='images/under_construction.jpeg'
+    image = Image.open(img_loc)
+    st.image(image)
+
+#To load style from local CSS file
+
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+local_css("style/style.css")
+
+#Navigation
+#Source:https://github.com/victoryhb/streamlit-option-menu
+#icons: https://icons.getbootstrap.com/
+selected2 = option_menu(None, ["Home", "Projects", "CV", 'Reading','Contact','Search'], 
+    icons=['house', 'kanban', "file-earmark-person", 'book','envelope','search'], 
+    menu_icon="cast", default_index=0, orientation="horizontal")
+selected2
 
 #----------HEADER SECTION----------
 st.subheader('Hi I am Sri Nagarajan.')
@@ -34,8 +65,10 @@ with st.container():
     st.header("My Projects")
     st.write("##")
     image_column, text_column = st.columns((1,2)) #Second column i.e. text here is twice as big as the image
-    #with image_column:
+    with image_column:
         #insert image
+        under_construction()
+        
     with text_column:
         st.subheader("Test project title")
         st.write(
@@ -68,5 +101,5 @@ with st.container():
         st.markdown(contact_form, unsafe_allow_html=True)
     with right_column:
         st.empty()
-        
+
 
