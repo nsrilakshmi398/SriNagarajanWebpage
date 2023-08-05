@@ -4,7 +4,7 @@ This is just a side project to learn creating website using Python with CSS as a
 All sources have been noted when used.
 
 - learn.py contains the main code
-- Folder images has all the images used in the website. With the sources to the images being provided when called into code
+- images has all the images used in the website. With the sources to the images being provided when called into code
 - pages contains the code for the multi pages of the website
 - style contains the css file for styling the webpage
 
